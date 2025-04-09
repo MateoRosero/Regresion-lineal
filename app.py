@@ -34,17 +34,24 @@ print(f"Intercepto: {modelo.intercept_:.2f}")
 print(f"R² (coeficiente de determinación): {r2:.2f}")
 
 
+# === Gráfico 1: Datos de entrenamiento ===
 plt.figure(figsize=(10, 6))
-
 plt.scatter(X_train, y_train, color='green', label='Datos de entrenamiento')
-
-plt.scatter(X_test, y_test, color='blue', label='Datos de prueba')
-
-plt.plot(X_test, y_pred, color='red', linewidth=2, label='Línea de regresión')
-
+plt.plot(X_train, modelo.predict(X_train), color='red', linewidth=2, label='Línea de regresión')
+plt.title("Regresión Lineal - Conjunto de Entrenamiento")
 plt.xlabel("Años de experiencia")
 plt.ylabel("Salario")
-plt.title("Regresión Lineal Simple: Experiencia vs. Salario")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# === Gráfico 2: Datos de prueba ===
+plt.figure(figsize=(10, 6))
+plt.scatter(X_test, y_test, color='blue', label='Datos de prueba')
+plt.plot(X_test, y_pred, color='red', linewidth=2, label='Línea de regresión')
+plt.title("Regresión Lineal - Conjunto de Prueba")
+plt.xlabel("Años de experiencia")
+plt.ylabel("Salario")
 plt.legend()
 plt.grid(True)
 plt.show()
